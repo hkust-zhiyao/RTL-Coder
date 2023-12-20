@@ -5,7 +5,7 @@ _**Note**: This repo is under construction. The training scripts and data genera
 
 TABLE 1 summarizes existing works in LLM-based design RTL generation.
 
-<img src="_pic/LLM_model.png" width="500px">
+<img src="_pic/LLM_model.jpg" width="500px">
 
 TABLE 1: LLM-based works on automatic design RTL (e.g., Verilog) generation based on natural language instructions. 
 
