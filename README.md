@@ -6,7 +6,7 @@
  |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|                                           
 ```
 
-_**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow  are provided. The whole dataset is coming soon. 
+_**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow  are provided. The whole dataset is coming soon._ 
 
 Targeting Verilog code generation, we propose an automated flow to generate a large labeled dataset with over 10,000 diverse Verilog design problems and answers. It addresses the serious data availability challenge in IC design-related tasks, and its potential applications are not limited to LLMs. The
 LLM directly trained on it can already achieve comparable accuracy with GPT-3.5.
