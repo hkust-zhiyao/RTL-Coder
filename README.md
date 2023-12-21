@@ -1,13 +1,9 @@
 ```
-
-  ____    _____   _        ____               _               
+  ___    _____   _        ____               _               
  |  _ \  |_   _| | |      / ___|   ___     __| |   ___   _ __ 
  | |_) |   | |   | |     | |      / _ \   / _` |  / _ \ | '__|
  |  _ <    | |   | |___  | |___  | (_) | | (_| | |  __/ | |   
- |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|   
-                                                              
-                                                                             
-                                              
+ |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|                                           
 ```
 
 _**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow  are provided. The whole dataset is coming soon. We are also still actively further improving and validating RTLCoder. This is version V1.0. If you are interested, please kindly monitor our latest update on Github repo in the near future._
