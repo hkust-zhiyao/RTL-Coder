@@ -94,9 +94,34 @@ torchrun --nproc_per_node=4  mle.py \
     --fp16 True \
     --output_dir <output path>\
     --num_train_epochs 3 \
+    --per_device_train_batch_size 2 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 32 \
+    --evaluation_strategy "no" \
+    --save_strategy "steps" \
+    --save_steps 50 \
+    --save_total_limit 10 \
+    --learning_rate 1e-5 \
+    --weight_decay 0. \
+    --logging_steps 1 \
+    --tf32 False\
+    --gradient_checkpointing True \
+    --deepspeed ds_stage_2.json\
+    --model_max_length 2048
+```
+For scoring based training method, you need to firstly obtain answer candidates to each of the instruction in the training dataset and we provide a data sample **scoring_data_sample.json** to illustrate the final data format.
+Then use the following command to start training:
+
+```
+torchrun --nproc_per_node=4  mle_scoring.py \
+    --model_name_or_path <model path> \
+    --data_path <data path> \
+    --fp16 True \
+    --output_dir <output path>\
+    --num_train_epochs 3 \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 2 \
-    --gradient_accumulation_steps 64 \
+    --gradient_accumulation_steps 64\
     --evaluation_strategy "no" \
     --save_strategy "steps" \
     --save_steps 50 \
@@ -110,5 +135,27 @@ torchrun --nproc_per_node=4  mle.py \
     --model_max_length 2048
 ```
 
-
+If your gpu could't afford batch size 1 with these answer candidates, try the gradients splitting method:
+```
+torchrun --nproc_per_node=4  mle_scoring_grad_splitting.py \
+    --model_name_or_path <model path> \
+    --data_path <data path> \
+    --fp16 True \
+    --output_dir <output path>\
+    --num_train_epochs 3 \
+    --per_device_train_batch_size 1 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 64\
+    --evaluation_strategy "no" \
+    --save_strategy "steps" \
+    --save_steps 50 \
+    --save_total_limit 10 \
+    --learning_rate 1e-5 \
+    --weight_decay 0. \
+    --logging_steps 1 \
+    --tf32 False\
+    --gradient_checkpointing True \
+    --deepspeed ds_stage_2.json\
+    --model_max_length 2048
+```
 
