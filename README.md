@@ -66,8 +66,19 @@ input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(0)
 sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
 print(tokenizer.decode(sample[0], truncate_before_pattern=[r"endmodule"]) + "endmodule")
 ```
-And we also provide the inference scripts for the two representative benchmarks in folder ***"benchmark_inference"**. 
-
+And we also provide the inference scripts for the two representative benchmarks in folder **"benchmark_inference"*. 
+To use the **"test_on_nvbench.py"**, you need to firstly download the nvidia benchmark: verilog-eval
+```
+git clone https://github.com/NVlabs/verilog-eval.git
+```
+Then you need to modify the **descri_path** and **input_path** in **"test_on_nvbench.py"** according to the location of verlog-eval file.  Use the following command to test the model on EvalMachine:
+```
+python test_on_nvbench.py --model <your model path or "ishorn5/RTLCoder-Z-v1.0"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalmachine.json> --bench_type Machine
+```
+If you want to test the model on EvalHuman, you just need to change the --bench_type from Machine to Human.
+```
+python test_on_nvbench.py --model <your model path or "ishorn5/RTLCoder-Z-v1.0"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalhuman.json> --bench_type Human
+```
 ## 4. Model training
 We provide three options for instruction tuning: MLE direct train, Scoring train and Scoring train with gradients splitting. For more details, please refer to the paper and the folder **"train"**
 
