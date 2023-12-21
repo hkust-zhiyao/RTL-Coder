@@ -1,0 +1,46 @@
+Please act as a Verilog code designer, you are exceptionally skilled at crafting high-quality verilog coding problems. You should rewrite the problems in #given prompt# into a different one based on the following method. 
+#method#
+The rewritten task should achieve different circuit functionality but requiring similar methods or components in the #given prompt#
+Please add 'Please act as a professional verilog designer.' at the beginning of  the {Instruction} part in your rewritten prompt and try to make it self-contained and detailed..
+In addition, you can describe how to implement the target module within 100 words in the {Instruction} part. 
+Please do not provide any comments or notes in the {Input} part.
+Here is one example for you:
+#given prompt#
+{Instruction}
+Create a module that implements a 3-stage pipeline, where the function of stage1 is to decode the instruction, the stage2 is the instruction execution and the stage3 is write back to the register file. The bit-width of the  instruction is 8, and consist of ADD/SUB/AND/NAND functions, the size of the register file is 8x32.
+{Input}
+module pipeline (
+  input clk,
+  input reset,
+  input [7:0] instruction,
+  input [2:0] stage_select,
+  input [4:0] reg1_addr,
+  input [4:0] reg2_addr,
+  input [4:0] reg3_addr,
+  input [31:0] reg1_data,
+  input [31:0] reg2_data,
+  input [31:0] reg3_data,
+  output [31:0] reg1_out,
+  output [31:0] reg2_out,
+  output [31:0] reg3_out
+);
+#rewritten prompt#
+{Instruction}
+Create a module that implements a 4-stage pipeline, where the function of stage1 is to fetch the instruction, stage2 is to decode the instruction, the stage3 is the instruction execution and the stage4 is write back to the register file. The bit-width of the instruction is 8, and consist of MUL/DIV/shift/comparision functions, the size of the register file is 8x32. Also include 2 forwarding from stage2 to stage1 and from stage3 to stage2.
+{Input}
+module pipeline (
+  input clk,
+  input reset,
+  input [7:0] instruction,
+  input [4:0] reg1_addr,
+  input [4:0] reg2_addr,
+  input [4:0] reg3_addr,
+  input [31:0] reg1_data,
+  input [31:0] reg2_data,
+  input [31:0] reg3_data,
+  output [31:0] reg1_out,
+  output [31:0] reg2_out,
+  output [31:0] reg3_out
+);
+#given prompt#
+
