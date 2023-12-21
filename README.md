@@ -8,6 +8,14 @@
 
 _**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow  are provided. The whole dataset is coming soon. We are also still actively further improving and validating RTLCoder. This is version V1.0. If you are interested, please kindly monitor our latest update on Github repo in the near future._
 
+Targeting Verilog code generation, we propose an automated flow to generate a large labeled dataset with over 10,000 diverse Verilog design problems and answers. It addresses the serious data availability challenge in IC design-related tasks, and its potential applications are not limited to LLMs. The
+LLM directly trained on it can already achieve comparable accuracy with GPT-3.5.
+
+We also introduce a new LLM training scheme based on code quality feedback. It further boosts the ultimate model performance to outperform GPT-3.5. And we further revised the training process from an algorithm perspective to reduce its GPU memory consumption.
+
+
+
+
 TABLE 1 summarizes existing works in LLM-based design RTL generation.
 
 <img src="_pic/LLM4RTL_comparison.jpg" width="500px">
@@ -51,7 +59,7 @@ For inference using RTLCoder, you can just use the following code.
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 # Prompt
-prompt = "//module half adder "
+prompt = "Please act as a professional verilog designer and provide a half adder"
 
 # Load model and tokenizer
 # With multiple gpus, you can specify the GPU you want to use as gpu_name (e.g. int(0)).
@@ -68,7 +76,7 @@ If you want to test the RTLCoder-4bit-GPTQ, you should have a GPU with at least 
 from transformers import AutoTokenizer
 from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 # Prompt
-prompt = "//module half adder "
+prompt = "Please act as a professional verilog designer and provide a half adder"
 
 tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-Z-v1.0", use_fast=True)
 # Set gpu_layers to the number of layers to offload to GPU. Set to 0 if no GPU acceleration is available on your system.
@@ -79,11 +87,11 @@ sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
 print(tokenizer.decode(sample[0], truncate_before_pattern=[r"endmodule"]) + "endmodule")
 ```
 And we also provide the inference scripts for the two representative benchmarks in folder **"benchmark_inference"**. 
-To use the **"test_on_nvbench.py"**, you need to firstly download the nvidia benchmark: verilog-eval.
+To use the **"test_on_verilog-eval.py"**, you need to firstly download the "verilog-eval" benchmark: .
 ```
 git clone https://github.com/NVlabs/verilog-eval.git
 ```
-Then you need to modify the **descri_path** and **input_path** in **"test_on_nvbench.py"** according to the location of verlog-eval file.  
+Then you need to modify the **"descri_path"** and **"input_path"** in **"test_on_nvbench.py"** according to the location of verlog-eval file.  
 
 Use the following command to test the model on EvalMachine:
 ```
@@ -118,8 +126,8 @@ torchrun --nproc_per_node=4  mle.py \
     --deepspeed ds_stage_2.json\
     --model_max_length 2048
 ```
-For scoring based training method, you need to firstly obtain answer candidates to each of the instruction in the training dataset and we provide a data sample **scoring_data_sample.json** to illustrate the final data format.
-Then use the following command to start training:
+For scoring based training method, you need to firstly obtain answer candidates to each of the instruction in the training dataset and we provide a data sample **"scoring_data_sample.json"** to illustrate the  data format for training.
+Then use the following command:
 
 ```
 torchrun --nproc_per_node=4  mle_scoring.py \
