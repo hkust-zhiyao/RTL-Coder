@@ -20,10 +20,13 @@ of the powerful general text generation ability of the commercial tool GPT. Plea
 The automated dataset generation flow is illustrated in **Figure 1** which includes three stages: 1) RTL domain keywords preparation, 2) instruction generation, and 3) reference code generation. We designed several general prompt templates to control GPT generating the desired outputs in each stage.
 
 <img src="_pic/data_gen_flow.jpg" width="700px">
+
 Figure 1:  Our proposed automated dataset generation flow.
+
 2. Besides the new training dataset, we propose a new LLM training scheme that incorporates code quality scoring. It significantly improves the RTLCoder’s performance on the RTL generation task. Also, we revised the training process from the algorithm perspective to reduce the GPU memory consumption of this new training method, allowing implementation with limited hardware resources. The training scheme is illustrated in **Figure 2**.
 
 <img src="_pic/training_flow.jpg" width="700px">
+
 Figure 2:  Our proposed training scheme based on RTL quality score.
 
 
