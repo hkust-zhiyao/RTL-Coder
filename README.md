@@ -123,7 +123,7 @@ Please refer the RTLLM benchmark repo https://github.com/NVlabs/verilog-eval to 
 ## 4. Model training
 We provide three options for instruction tuning: MLE based direct train, Scoring train and Scoring train with gradients splitting. For more details, please refer to the paper and the folder **"train"**.
 
-For MLE based directl training, just simply use:
+For MLE based direct training, just simply use:
 ```
 torchrun --nproc_per_node=4  mle.py \
     --model_name_or_path <model path> \
