@@ -73,7 +73,7 @@ for iter in range(args.n):
             if id > len(bench_data):
                 break
         inputs = tokenizer(tmp_list, return_tensors="pt", padding='longest').to(args.gpu_name)
-        outputs = model.generate(inputs=inputs.input_ids, max_length=len(inputs[0]) + 2048, do_sample=True, temperature=0.6, top_p=0.95, 
+        outputs = model.generate(inputs=inputs.input_ids, max_length=len(inputs[0]) + 2048, do_sample=True, temperature=args.temperature, top_p=0.95, 
         attention_mask=inputs.attention_mask)
         for res_i, output in enumerate(outputs):
             s_full = tokenizer.decode(output[len(inputs[0]):].cpu().squeeze(), skip_special_tokens=True)
