@@ -12,7 +12,7 @@ import tqdm
 from rouge_score import rouge_scorer
 import utils
 
-evolv_dic = ['vary_func_1.txt']  # list of mutation method
+evolv_dic = ['p_example.txt']  # list of mutation method
 evo_type = evolv_dic[0] #choose a  mutation method
 
 def encode_prompt_topic(prompt_instructions):
@@ -163,7 +163,7 @@ import openai
 
 
 generate_instruction_following_data(output_dir="",
-        seed_tasks_path="seed_pool.json",
+        seed_tasks_path="data_sample.json",
         output_file='new_instructions.json',
         num_instructions_to_generate=50,
         num_prompt_instructions=1,
