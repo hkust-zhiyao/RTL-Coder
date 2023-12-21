@@ -1,4 +1,14 @@
-# RTL-Coder
+```
+
+  ____    _____   _        ____               _               
+ |  _ \  |_   _| | |      / ___|   ___     __| |   ___   _ __ 
+ | |_) |   | |   | |     | |      / _ \   / _` |  / _ \ | '__|
+ |  _ <    | |   | |___  | |___  | (_) | | (_| | |  __/ | |   
+ |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|   
+                                                              
+                                                                             
+                                              
+```
 
 _**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow  are provided. The whole dataset is coming soon. We are also still actively further improving and validating RTLCoder. This is version V1.0. If you are interested, please kindly monitor our latest update on Github repo in the near future._
 
@@ -31,7 +41,8 @@ of the powerful general text generation ability of the commercial tool GPT. Plea
 
 
 ## 2. Training data generation
-We provide the generation scripts and data samples in the folder **"data_generation"**. You can design your own prompting method by modifying the file **"p_example.txt"** and **"instruction_gen.py"**
+We provide the generation scripts and data samples in the folder **"data_generation"**. You can design your own prompting method by modifying the file **"p_example.txt"** and **"instruction_gen.py"**.
+
 You can expand the existing dataset by running the following command:
 ```
 python instruction_gen.py
@@ -72,15 +83,17 @@ sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
 print(tokenizer.decode(sample[0], truncate_before_pattern=[r"endmodule"]) + "endmodule")
 ```
 And we also provide the inference scripts for the two representative benchmarks in folder **"benchmark_inference"**. 
-To use the **"test_on_nvbench.py"**, you need to firstly download the nvidia benchmark: verilog-eval
+To use the **"test_on_nvbench.py"**, you need to firstly download the nvidia benchmark: verilog-eval.
 ```
 git clone https://github.com/NVlabs/verilog-eval.git
 ```
-Then you need to modify the **descri_path** and **input_path** in **"test_on_nvbench.py"** according to the location of verlog-eval file.  Use the following command to test the model on EvalMachine:
+Then you need to modify the **descri_path** and **input_path** in **"test_on_nvbench.py"** according to the location of verlog-eval file.  
+
+Use the following command to test the model on EvalMachine:
 ```
 python test_on_nvbench.py --model <your model path or "ishorn5/RTLCoder-Z-v1.0"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalmachine.json> --bench_type Machine
 ```
-If you want to test the model on EvalHuman, you just need to change the --bench_type from Machine to Human.
+If you want to test the model on EvalHuman, just change the --bench_type from Machine to Human.
 ```
 python test_on_nvbench.py --model <your model path or "ishorn5/RTLCoder-Z-v1.0"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalhuman.json> --bench_type Human
 ```
@@ -137,7 +150,7 @@ torchrun --nproc_per_node=4  mle_scoring.py \
 
 If your gpu could't afford batch size 1 with these answer candidates, try the gradients splitting method:
 ```
-torchrun --nproc_per_node=4  mle_scoring_grad_splitting.py \
+torchrun --nproc_per_node=4  mle_scoring_grad_split.py \
     --model_name_or_path <model path> \
     --data_path <data path> \
     --fp16 True \
