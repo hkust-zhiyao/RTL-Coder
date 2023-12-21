@@ -85,8 +85,30 @@ If you want to test the model on EvalHuman, you just need to change the --bench_
 python test_on_nvbench.py --model <your model path or "ishorn5/RTLCoder-Z-v1.0"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalhuman.json> --bench_type Human
 ```
 ## 4. Model training
-We provide three options for instruction tuning: MLE direct train, Scoring train and Scoring train with gradients splitting. For more details, please refer to the paper and the folder **"train"**
-
+We provide three options for instruction tuning: MLE based direct train, Scoring train and Scoring train with gradients splitting. For more details, please refer to the paper and the folder **"train"**
+For MLE based directl training, just simply use:
+```
+torchrun --nproc_per_node=4  mle.py \
+    --model_name_or_path <model path> \
+    --data_path <data path> \
+    --fp16 True \
+    --output_dir <output path>\
+    --num_train_epochs 3 \
+    --per_device_train_batch_size 1 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 64 \
+    --evaluation_strategy "no" \
+    --save_strategy "steps" \
+    --save_steps 50 \
+    --save_total_limit 10 \
+    --learning_rate 1e-5 \
+    --weight_decay 0. \
+    --logging_steps 1 \
+    --tf32 False\
+    --gradient_checkpointing True \
+    --deepspeed ds_stage_2.json\
+    --model_max_length 2048
+```
 
 
 
