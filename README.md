@@ -83,7 +83,6 @@ from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 prompt = "Please act as a professional verilog designer and provide a half adder"
 
 tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-Z-v1.0", use_fast=True)
-# Set gpu_layers to the number of layers to offload to GPU. Set to 0 if no GPU acceleration is available on your system.
 model = AutoGPTQForCausalLM.from_quantized("ishorn5/RTLCoder-Z-GPTQ4bit-v1.0", device="cuda:0")
 # Sample
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(0)
