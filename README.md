@@ -147,7 +147,7 @@ torchrun --nproc_per_node=4  mle.py \
     --model_max_length 2048
 ```
 For scoring based training method, you need to firstly obtain answer candidates to each of the instruction in the training dataset and we provide a data sample **"scoring_data_sample.json"** to illustrate the  data format for training.
-Then use the following command:
+Then use the following command.
 
 ```
 torchrun --nproc_per_node=4  mle_scoring.py \
