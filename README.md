@@ -5,8 +5,10 @@
  |  _ <    | |   | |___  | |___  | (_) | | (_| | |  __/ | |   
  |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|                                           
 ```
+# RTL-Coder: Outperforming GPT-3.5 in RTL Code Generation with Our Fully Open-Source Dataset and Lightweight Solution
+Shang Liu, Wenji Fang, Yao Lu, Qijun Zhang, Hongce Zhang, and Zhiyao Xie, "RTL-Coder: Outperforming GPT-3.5 in RTL Code Generation with Our Fully Open-Source Dataset and Lightweight Solution"[[paper]](https://arxiv.org/abs/2312.08617)
 
-_**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow  are provided. The whole dataset is coming soon._ 
+_**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow  are provided. The whole dataset is coming soon. We are also still actively further improving and validating RTLCoder. This is version V1.0. If you are interested, please kindly monitor our latest update on Arxiv and Github repo in the near future.__ 
 
 Targeting Verilog code generation, we propose an automated flow to generate a large labeled dataset with over 10,000 diverse Verilog design problems and answers. It addresses the serious data availability challenge in IC design-related tasks, and its potential applications are not limited to LLMs. The
 LLM directly trained on it can already achieve comparable accuracy with GPT-3.5.
