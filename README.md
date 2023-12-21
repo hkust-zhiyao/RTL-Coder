@@ -1,6 +1,6 @@
 # RTL-Coder
 
-_**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow training scripts are provided. The whole dataset is coming soon. We are also still actively further improving and validating RTLCoder. This is version V1.0. If you are interested, please kindly monitor our latest update on Github repo in the near future._
+_**Note**: This repo is under construction. The model, inference scripts, data generation flow and training flow  are provided. The whole dataset is coming soon. We are also still actively further improving and validating RTLCoder. This is version V1.0. If you are interested, please kindly monitor our latest update on Github repo in the near future._
 
 TABLE 1 summarizes existing works in LLM-based design RTL generation.
 
