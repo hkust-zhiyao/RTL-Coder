@@ -17,15 +17,17 @@ In this paper, there are two main contributions to obtain the RTLCoder.
 1. We first introduce our automated dataset generation flow. It generated our RTL generation dataset with over 10 thousand samples, each sample being a pair of design description instruction and corresponding reference code. We build this automated generation flow by taking full advantage
 of the powerful general text generation ability of the commercial tool GPT. Please notice that GPT is only used for dataset generation in this work and we adhere to the terms of service of OpenAI, and there is no commercial competition between the proposed RTLcoder and OpenAI's models. The automated dataset generation flow is illustrated in **Figure 1** which includes three stages: 1) RTL domain keywords preparation, 2) instruction generation, and 3) reference code generation. We designed several general prompt templates to control GPT generating the desired outputs in each stage.
 
-   <img src="_pic/data_gen_flow.jpg" width="700px" div align=center>
 
-   <center>Figure 1:  Our proposed automated dataset generation flow.</center>
+   <img src="_pic/data_gen_flow.jpg" width="700px">
+
+   Figure 1:  Our proposed automated dataset generation flow.
 
 2. Besides the new training dataset, we propose a new LLM training scheme that incorporates code quality scoring. It significantly improves the RTLCoder’s performance on the RTL generation task. Also, we revised the training process from the algorithm perspective to reduce the GPU memory consumption of this new training method, allowing implementation with limited hardware resources. The training scheme is illustrated in **Figure 2**.
 
-   <img src="_pic/training_flow.jpg" width="700px" div align=center>
 
-   <center>Figure 2:  Our proposed training scheme based on RTL quality score.</center>
+   <img src="_pic/training_flow.jpg" width="700px">
+
+   Figure 2:  Our proposed training scheme based on RTL quality score.
 
 
 ## 2. Training data generation
