@@ -78,7 +78,7 @@ input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(gpu_name)
 sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
 print(tokenizer.decode(sample[0], truncate_before_pattern=[r"endmodule"]) + "endmodule")
 ```
-If you want to test the RTLCoder-4bit-GPTQ, you should have a GPU with at least 4GB memory and use the following code.
+To test the RTLCoder-4bit-GPTQ,  you can just use the following code.
 ```
 from transformers import AutoTokenizer
 from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
