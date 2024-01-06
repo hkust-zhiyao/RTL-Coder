@@ -20,7 +20,7 @@ We also introduce a new LLM training scheme based on code quality feedback. It f
 
 TABLE 1 summarizes existing works in LLM-based design RTL generation.
 
-<img src="_pic/LLM4RTL_comparison.jpg" width="500px">
+<img src="_pic/LLM4RTL_comparison_arxive.jpg" width="500px">
 
 TABLE 1: LLM-based works on design RTL generation (e.g., Verilog). 
 
