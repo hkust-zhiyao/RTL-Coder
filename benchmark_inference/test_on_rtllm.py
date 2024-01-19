@@ -15,9 +15,7 @@ from transformers import (
 )
 import argparse
 from transformers import AutoModelForSeq2SeqLM
-from peft import PeftModel, PeftConfig
 import os
-from tqdm import*
 from accelerate import load_checkpoint_and_dispatch, init_empty_weights, infer_auto_device_map, load_checkpoint_in_model
 parser = argparse.ArgumentParser(description='Process some test.')
 parser.add_argument('--model', type=str)
@@ -29,10 +27,12 @@ args = parser.parse_args()
 import json
 import tqdm
 import copy
-design_list = ['accu', 'adder_8bit', 'adder_16bit', 'adder_32bit', 'asyn_fifo', 'calendar', 'counter_12', 'edge_detect',
-               'freq_div', 'fsm', 'Johnson_Counter', 'multi_booth', 'multi_pipe_4bit', 'mux', 'parallel2serial', 'pulse_detect',
-               'radix2_div', 'RAM', 'right_shifter', 'serial2parallel', 'signal_generator', 'traffic_light', 'width_8to16',
-               'adder_64bit', 'alu', 'div_16bit', 'multi_16bit', 'multi_pipe_8bit', 'pe']
+design_list = ['accu', 'adder_8bit', 'adder_16bit', 'adder_32bit', 'adder_pipe_64bit', 'asyn_fifo', 'calendar', 'counter_12', 'edge_detect',
+               'freq_div', 'fsm', 'JC_counter', 'multi_16bit', 'multi_booth_8bit', 'multi_pipe_4bit', 'multi_pipe_8bit', 'parallel2serial' , 'pe_single' , 'pulse_detect', 
+               'radix2_div', 
+               'RAM_single', 'right_shifter', 
+               'serial2parallel', 
+               'signal_generator','synchronizer', 'alu', 'div_16bit', 'traffic_light', 'width_8to16']
 def load_testjson(filename):
     des_data = []
     with open(filename, 'r') as f:
@@ -50,7 +50,7 @@ config = AutoConfig.from_pretrained(checkpoint)
 tokenizer = AutoTokenizer.from_pretrained(checkpoint, padding_side="left")
 model = AutoModelForCausalLM.from_pretrained(checkpoint, torch_dtype=torch.float16, device_map=args.gpu_name)
 model.eval()
-gen_batch_size = 10 # inference batch size
+gen_batch_size = 1 # inference batch size
 
 output_dir = args.output_dir
 
