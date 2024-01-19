@@ -41,7 +41,7 @@ def load_testjson(filename):
             des_data.append(data)
     return des_data
 
-bench_path = 'rtllm.json'
+bench_path = 'rtllm-1.1.json'
 bench_data = load_testjson(bench_path)
 
 progress_bar = tqdm.tqdm(total=len(bench_data) * args.n)
