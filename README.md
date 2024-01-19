@@ -24,7 +24,7 @@ TABLE 1 summarizes existing works in LLM-based design RTL generation.
 
 TABLE 1: LLM-based works on design RTL generation (e.g., Verilog). 
 
-**In our work, we provide two RTL code generation models that are available on the HuggingFace platform.**
+**In our work, we provide three RTL code generation models that are available on the HuggingFace platform.**
 1. [RTLCoder-v1.1](https://huggingface.co/ishorn5/RTLCoder-v1.1).
 2. [RTLCoder-v1.1-gptq-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gptq-4bit).
 3. [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit). This quantized one could be run on cpu.
