@@ -81,6 +81,7 @@ prompt = "Please act as a professional verilog designer and provide a half adder
 
 # Load model and tokenizer
 # With multiple gpus, you can specify the GPU you want to use as gpu_name (e.g. int(0)).
+gpu_name = 0
 tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-v1.1")
 model = AutoModelForCausalLM.from_pretrained("ishorn5/RTLCoder-v1.1", torch_dtype=torch.float16, device_map=gpu_name)
 
