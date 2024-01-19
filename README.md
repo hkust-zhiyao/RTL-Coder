@@ -126,7 +126,7 @@ Please refer the verilog-eval benchmark repo https://github.com/NVlabs/verilog-e
 
 (3) Test model on RTLLM
 
-We provide the organized  descriptions of RTLLM as **"rtllm.json"**  in folder **"benchmark_inference"**. 
+We provide the organized  descriptions of RTLLM as **"rtllm-1.1.json"**  in folder **"benchmark_inference"**. 
 
 Use the following command to do inference on RTLLM benchmark.
 ```
