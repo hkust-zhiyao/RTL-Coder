@@ -68,7 +68,7 @@ from ctransformers import AutoModelForCausalLM
 model_path = 'ggml-model-q4_0.gguf'
 # Set gpu_layers to the number of layers to offload to GPU. Set to 0 if no GPU acceleration is available on your system.
 llm = AutoModelForCausalLM.from_pretrained(model_path, model_type="mistral", gpu_layers=0, max_new_tokens=2000, context_length=6048, temperature=0.5, top_p=0.95,)
-prompt = "Please act as a professional verilog designer and provide a half adder"
+prompt = "Please act as a professional verilog designer and provide a half adder. \nmodule half_adder\n(input a, \ninput b, \noutput sum, \n output carry);\n"
 print(llm(prompt))
 
 ```
@@ -77,7 +77,7 @@ For inference using RTLCoder, you can just use the following code.
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 # Prompt
-prompt = "Please act as a professional verilog designer and provide a half adder"
+prompt = "Please act as a professional verilog designer and provide a half adder. \nmodule half_adder\n(input a, \ninput b, \noutput sum, \n output carry);\n"
 
 # Load model and tokenizer
 # With multiple gpus, you can specify the GPU you want to use as gpu_name (e.g. int(0)).
@@ -88,21 +88,21 @@ model = AutoModelForCausalLM.from_pretrained("ishorn5/RTLCoder-v1.1", torch_dtyp
 # Sample
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(gpu_name)
 sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
-print(tokenizer.decode(sample[0], truncate_before_pattern=[r"endmodule"]) + "endmodule")
+print(tokenizer.decode(sample[0]))
 ```
 To test the RTLCoder-gptq-4bit,  you can just use the following code.
 ```
 from transformers import AutoTokenizer
 from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 # Prompt
-prompt = "Please act as a professional verilog designer and provide a half adder"
+prompt = "Please act as a professional verilog designer and provide a half adder. \nmodule half_adder\n(input a, \ninput b, \noutput sum, \n output carry);\n"
 
 tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-v1.1-gptq-4bit", use_fast=True)
 model = AutoGPTQForCausalLM.from_quantized("ishorn5/RTLCoder-v1.1-gptq-4bit", device="cuda:0")
 # Sample
-input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(0)
-sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
-print(tokenizer.decode(sample[0], truncate_before_pattern=[r"endmodule"]) + "endmodule")
+inputs = tokenizer(prompt, return_tensors="pt").to(0)
+sample = model.generate(**inputs, max_length=512, temperature=0.5, top_p=0.9)
+print(tokenizer.decode(sample[0]))
 ```
 
 (2) Test model on Verilog-eval
