@@ -84,7 +84,7 @@ prompt = "Please act as a professional verilog designer and provide a half adder
 gpu_name = 0
 tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-v1.1")
 model = AutoModelForCausalLM.from_pretrained("ishorn5/RTLCoder-v1.1", torch_dtype=torch.float16, device_map=gpu_name)
-
+model.eval()
 # Sample
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(gpu_name)
 sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
@@ -99,6 +99,7 @@ prompt = "Please act as a professional verilog designer and provide a half adder
 
 tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-v1.1-gptq-4bit", use_fast=True)
 model = AutoGPTQForCausalLM.from_quantized("ishorn5/RTLCoder-v1.1-gptq-4bit", device="cuda:0")
+model.eval()
 # Sample
 inputs = tokenizer(prompt, return_tensors="pt").to(0)
 sample = model.generate(**inputs, max_length=512, temperature=0.5, top_p=0.9)
