@@ -1,0 +1,5 @@
+transformers==4.34.0
+SentencePiece
+Deepspeed
+scikit-learn
+openai==0.28.0
