@@ -4,3 +4,4 @@ SentencePiece
 Deepspeed
 scikit-learn
 openai==0.28.0
+optimum
