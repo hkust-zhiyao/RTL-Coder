@@ -1,3 +1,4 @@
+torch==2.1.0
 transformers==4.34.0
 SentencePiece
 Deepspeed
