@@ -26,10 +26,12 @@ TABLE 1: LLM-based works on design RTL generation (e.g., Verilog).
 
 **In our work, we provide four RTL code generation models that are available on the HuggingFace platform.**
 
-1. [RTLCoder-Deepseek-v1.1](https://huggingface.co/ishorn5/RTLCoder-Deepseek-v1.1). (This model was finetund on DeepSeek-coder-6.7b. It has the best performance but with a relatively lower inference speed compared with the following models)
-2. [RTLCoder-v1.1](https://huggingface.co/ishorn5/RTLCoder-v1.1). (Finetuned based on Mistral-v0.1)
-3. [RTLCoder-v1.1-gptq-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gptq-4bit). (The GPTQ version of RTLCoder-v1.1)
-4. [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit). This quantized one could run on CPU. (The CPU version of RTLCoder-v1.1)
+1. [RTLCoder-Deepseek-v1.1](https://huggingface.co/ishorn5/RTLCoder-Deepseek-v1.1).
+   This model was finetund on DeepSeek-coder-6.7b. It has the best performance but with a relatively lower inference speed compared with the following models. The       RTLCoder-Deepseek-v1.1 may not stop even when the required output text is finished. So We need to extract the required code part before the keyword               
+   "endmodulemodule" from the output sequence and add an "endmodule" at the end.
+3. [RTLCoder-v1.1](https://huggingface.co/ishorn5/RTLCoder-v1.1). (Finetuned based on Mistral-v0.1)
+4. [RTLCoder-v1.1-gptq-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gptq-4bit). (The GPTQ version of RTLCoder-v1.1)
+5. [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit). This quantized one could run on CPU. (The CPU version of RTLCoder-v1.1)
 
 ## 1. Working flow overview
 In this paper, there are two main contributions to obtain the RTLCoder. 
@@ -61,10 +63,42 @@ The 27K instruction-code dataset "Resyn-27k.json" is provided in the "dataset" f
 ## 3. Model inference
 
 (1) Inference demo
+The input prompt may have a great influence on the generation quality. Ideally, it should describe the circuit "IO" and behavior clearly so that it doesn't contain ambiguity. We provide a template as follows.
+```
+Please act as a professional verilog designer.
+
+Implement a module for parallel-to-serial conversion, where every four input bits are converted to a serial one bit output (from MSB to LSB). The output signal valid_out is set to 1 to indicate the availability of valid serial output. When valid_out = 1, the most significant bit of d is output, and the remaining three bits are output sequentially in the following 3 cycles.
+
+Module name:  
+    parallel2serial     
+
+Input ports:
+    clk: Clock signal used for synchronous operations.
+    rst_n: Reset signal. Defined as 0 for reset and 1 for reset signal inactive.
+    d: 4-bit parallel data input.
+
+Output ports:
+    valid_out: Valid signal indicating the availability of serial output.
+    dout: Serial output representing the converted data.
+
+Implementation:
+The most significant bit of the parallel input is assigned to the serial output (dout). On each clock cycle, if the counter (cnt) is 3, indicating the last bit of the parallel input, the module updates the data register (data) with the parallel input (d), resets the counter (cnt) to 0, and sets the valid signal (valid) to 1.
+Otherwise, the module increments the counter (cnt) by 1, sets the valid signal (valid) to 0, and shifts the data register (data) one bit to the left, with the most significant bit shifted to the least significant bit.
+Counter Register: If the reset signal (rst_n) is high, the register (cnt) is incremented by 1.
+
+Give me the complete code.
+module parallel2serial(
+    input clk,
+    input rst_n,
+    input [3:0] d,
+    output valid_out,
+    output dout
+);
+```
 
 If you don't have a GPU with more than 4 GB memory, please try the quantized 4-bit version which could run on CPU: [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit).
-After downloading this model file: 'ggml-model-q4_0.gguf', you can use the following code to do inference.
-```
+After d
+
 from ctransformers import AutoModelForCausalLM
 model_path = 'ggml-model-q4_0.gguf'
 # Set gpu_layers to the number of layers to offload to GPU. Set to 0 if no GPU acceleration is available on your system.
