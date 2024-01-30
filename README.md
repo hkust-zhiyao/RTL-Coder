@@ -173,11 +173,11 @@ Then modify the **"descri_path"** and **"input_path"** in **"test_on_nvbench.py"
 
 Use the following command to do model inference on EvalMachine.
 ```
-python test_on_nvbench.py --model <your model path or "ishorn5/RTLCoder-v1.1"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalmachine.json> --bench_type Machine
+python test_on_nvbench.py --model <your model path or model card name, e.g., "ishorn5/RTLCoder-v1.1"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalmachine.json> --bench_type Machine
 ```
 If you want to do model inference on EvalHuman, just change the --bench_type from Machine to Human.
 ```
-python test_on_nvbench.py --model <your model path or "ishorn5/RTLCoder-v1.1"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalhuman.json> --bench_type Human
+python test_on_nvbench.py --model <your model path or model card name, e.g., "ishorn5/RTLCoder-v1.1"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalhuman.json> --bench_type Human
 ```
 Please refer the verilog-eval benchmark repo https://github.com/NVlabs/verilog-eval to evaluate the generated code quality.
 
@@ -187,7 +187,7 @@ We provide the organized  descriptions of RTLLM as **"rtllm-1.1.json"**  in fold
 
 Use the following command to do inference on RTLLM benchmark.
 ```
-python test_on_rtllm.py --model <your model path or "ishorn5/RTLCoder-v1.1">  --n 5 --temperature=0.5 --gpu_name 0 --output_dir <your result directory> 
+python test_on_rtllm.py --model <your model path or model card name, e.g., "ishorn5/RTLCoder-v1.1">  --n 5 --temperature=0.5 --gpu_name 0 --output_dir <your result directory> 
 ```
 Please refer the RTLLM benchmark repo https://github.com/hkust-zhiyao/RTLLM to evaluate the generated code quality.
 
