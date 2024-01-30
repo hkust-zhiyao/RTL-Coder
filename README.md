@@ -62,6 +62,7 @@ The 27K instruction-code dataset "Resyn-27k.json" is provided in the "dataset" f
 ## 3. Model inference
 
 (1) Inference demo
+
 The input prompt may have a great influence on the generation quality. Ideally, it should describe the circuit "IO" and behavior clearly so that it doesn't contain ambiguity. We provide a template as follows.
 ```
 Please act as a professional verilog designer.
