@@ -24,10 +24,12 @@ TABLE 1 summarizes existing works in LLM-based design RTL generation.
 
 TABLE 1: LLM-based works on design RTL generation (e.g., Verilog). 
 
-**In our work, we provide three RTL code generation models that are available on the HuggingFace platform.**
-1. [RTLCoder-v1.1](https://huggingface.co/ishorn5/RTLCoder-v1.1).
-2. [RTLCoder-v1.1-gptq-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gptq-4bit).
-3. [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit). This quantized one could run on cpu.
+**In our work, we provide four RTL code generation models that are available on the HuggingFace platform.**
+
+1. [RTLCoder-Deepseek-v1.1](https://huggingface.co/ishorn5/RTLCoder-Deepseek-v1.1). (This model was finetund on DeepSeek-coder-6.7b. It has the best performance but with a relatively lower inference speed compared with the following models)
+2. [RTLCoder-v1.1](https://huggingface.co/ishorn5/RTLCoder-v1.1). (Fined based on Mistral-v0.1)
+3. [RTLCoder-v1.1-gptq-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gptq-4bit). (The GPTQ version of RTLCoder-v1.1)
+4. [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit). This quantized one could run on CPU. (The CPU version of RTLCoder-v1.1)
 
 ## 1. Working flow overview
 In this paper, there are two main contributions to obtain the RTLCoder. 
