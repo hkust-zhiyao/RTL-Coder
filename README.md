@@ -67,33 +67,61 @@ The input prompt may have a great influence on the generation quality. Ideally, 
 ```
 Please act as a professional verilog designer.
 
-Implement a module for parallel-to-serial conversion, where every four input bits are converted to a serial one bit output (from MSB to LSB). The output signal valid_out is set to 1 to indicate the availability of valid serial output. When valid_out = 1, the most significant bit of d is output, and the remaining three bits are output sequentially in the following 3 cycles.
+Implement a traffic light, with red, yellow and green three small indicators and a pedestrian button, under normal circumstances, the motor vehicle lane indicator light according to 60 clock cycles of green, 5 clock cycles of yellow, 10 clock cycles of red. When the pedestrian button is pressed, if the remaining green time is greater than 10 clocks, it is shortened to 10 clocks, and if it is less than 10 clocks, it remains unchanged. The lane light and the sidewalk light should be paired, when the lane light is green or yellow, the sidewalk light is red; When the lane light is red, the sidewalk light is green, and for the sake of simplicity, only the lane light is considered.
 
 Module name:  
-    parallel2serial     
+    traffic_light
 
-Input ports:
-    clk: Clock signal used for synchronous operations.
-    rst_n: Reset signal. Defined as 0 for reset and 1 for reset signal inactive.
-    d: 4-bit parallel data input.
+Inputs:
+    rst_n: Reset signal (active low).
+    clk: Clock signal.
+    pass_request: Request signal for allowing vehicles to pass.
 
-Output ports:
-    valid_out: Valid signal indicating the availability of serial output.
-    dout: Serial output representing the converted data.
+Outputs:
+    clock[7:0]: An 8-bit output representing the count value of the internal counter.
+    red, yellow, green: Output signals representing the state of the traffic lights.
+
+Parameters:
+    idle, s1_red, s2_yellow, s3_green: Enumeration values representing different states of the traffic light controller.
+
+Registers and Wires:
+    cnt: A 8-bit register used as an internal counter for timing purposes.
+    state: A 2-bit register representing the current state of the traffic light controller.
+    p_red, p_yellow, p_green: 1-bit registers representing the next values for the red, yellow, and green signals.
 
 Implementation:
-The most significant bit of the parallel input is assigned to the serial output (dout). On each clock cycle, if the counter (cnt) is 3, indicating the last bit of the parallel input, the module updates the data register (data) with the parallel input (d), resets the counter (cnt) to 0, and sets the valid signal (valid) to 1.
-Otherwise, the module increments the counter (cnt) by 1, sets the valid signal (valid) to 0, and shifts the data register (data) one bit to the left, with the most significant bit shifted to the least significant bit.
-Counter Register: If the reset signal (rst_n) is high, the register (cnt) is incremented by 1.
+The following is the design track we recommend:
+The first always block is responsible for the state transition logic. It uses a case statement to handle different states. Here's a summary of each state:
+idle: Initial state where all signals are set to 0. Transition to s1_red state occurs immediately.
+s1_red: Sets the red signal to 1 and waits for a count of 3 before transitioning to s3_green state. Otherwise, it remains in s1_red state.
+s2_yellow: Sets the yellow signal to 1 and waits for a count of 3 before transitioning to s1_red state. Otherwise, it remains in s2_yellow state.
+s3_green: Sets the green signal to 1 and waits for a count of 3 before transitioning to s2_yellow state. Otherwise, it remains in s3_green state.
+The second always block handles the counting logic of the internal counter (cnt). The counter is decremented by 1 on every positive edge of the clock or negative edge of the reset signal. The counter values are adjusted based on various conditions:
+If (!rst_n), the counter is set to 10.
+If the pass_request signal is active and the green signal is active, the counter is set to 10.
+If the green signal is inactive and the previous green signal (p_green) was active, the counter is set to 60.
+If the yellow signal is inactive and the previous yellow signal (p_yellow) was active, the counter is set to 5.
+If the red signal is inactive and the previous red signal (p_red) was active, the counter is set to 10.
+Otherwise, the counter is decremented normally.
+The assign statement assigns the value of the internal counter (cnt) to the output clock.
+The final always block handles the output signals. It assigns the previous values (p_red, p_yellow, p_green) to the output signals (red, yellow, green) on the positive edge of the clock or negative edge of the reset signal.
 
 Give me the complete code.
-module parallel2serial(
-    input clk,
-    input rst_n,
-    input [3:0] d,
-    output valid_out,
-    output dout
-);
+module traffic_light
+    (
+		input rst_n, 
+      input clk, 
+      input pass_request,
+		  output wire[7:0]clock,
+      output reg red,
+		  output reg yellow,
+		  output reg green
+    );
+	
+	parameter 	idle = 2'd0,
+				s1_red = 2'd1,
+				s2_yellow = 2'd2,
+				s3_green = 2'd3;
 ```
 
 If you don't have a GPU with more than 4 GB memory, please try the quantized 4-bit version which could run on CPU: [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit).
