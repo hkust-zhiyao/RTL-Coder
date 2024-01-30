@@ -83,13 +83,27 @@ prompt = "Please act as a professional verilog designer and provide a half adder
 # Load model and tokenizer
 # With multiple gpus, you can specify the GPU you want to use as gpu_name (e.g. int(0)).
 gpu_name = 0
-tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-v1.1")
-model = AutoModelForCausalLM.from_pretrained("ishorn5/RTLCoder-v1.1", torch_dtype=torch.float16, device_map=gpu_name)
+tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-Deepseek-v1.1")
+model = AutoModelForCausalLM.from_pretrained("ishorn5/RTLCoder-Deepseek-v1.1", torch_dtype=torch.float16, device_map=gpu_name)
 model.eval()
 # Sample
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(gpu_name)
 sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
-print(tokenizer.decode(sample[0]))
+s_full = tokenizer.decode(sample[0])
+# The RTLCoder-Deepseek-v1.1 may not stop even when the required output text is finished.
+# We need to extract the required part from the output sequence based on a keyword "endmodulemodule".
+s = s_full.split('endmodulemodule', 1)[0] + "\n" + "endmodule" 
+print(s)
+
+#For "ishorn5/RTLCoder-v1.1", it will stop generating tokens after completing the coding task.
+#But you can still use the keyword "endmodule" to extract the code part.
+#tokenizer = AutoTokenizer.from_pretrained("ishorn5/RTLCoder-v1.1")
+#model = AutoModelForCausalLM.from_pretrained("ishorn5/RTLCoder-v1.1", torch_dtype=torch.float16, device_map=gpu_name)
+#model.eval()
+#Sample
+#input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(gpu_name)
+#sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
+#print(tokenizer.decode(sample[0]))
 ```
 To test the RTLCoder-gptq-4bit,  you can just use the following code.
 ```
