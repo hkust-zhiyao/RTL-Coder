@@ -84,6 +84,10 @@ while id <= len(des_data):
 
     for res_i, output in enumerate(outputs):
         s_full = tokenizer.decode(output[len(inputs[0]):].cpu().squeeze(), skip_special_tokens=True)
+        #please note that the RTLCoder-deepseek-v1.1 version requires a different extraction method
+        #s = s_full.split('endmodulemodule', 1)[0] + "endmodule"
+        #If the RTLCoder version is based on Mistral, just use the following extraction method.
+        ####
         s = s_full.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
 
         # the model may output testbench after the design code
@@ -93,7 +97,7 @@ while id <= len(des_data):
         if index != -1:
             s_tmp = s[:index]
             s = s_tmp.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
-
+        #####
     with open(os.path.join(args.output_dir, args.output_file),'a') as f:
         for dic_item in dic_list:
             ob = json.dumps(dic_item)
