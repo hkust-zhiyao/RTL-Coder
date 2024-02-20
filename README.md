@@ -102,7 +102,7 @@ module width_8to16(
 
 ```
 
-If you don't have a GPU with more than 4 GB memory, please try the quantized 4-bit version which could run on CPU: [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit).
+If you don't have a GPU with more than 4 GB memory, please try the quantized 4-bit version which could run on CPU: [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit). Before you try the following code, please install the [ctransformers](https://github.com/marella/ctransformers) package.
 
 ```
 
@@ -146,10 +146,10 @@ print(s)
 #sample = model.generate(input_ids, max_length=512, temperature=0.5, top_p=0.9)
 #print(tokenizer.decode(sample[0]))
 ```
-To test the RTLCoder-gptq-4bit,  you can just use the following code.
+To test the RTLCoder-gptq-4bit,  you can just use the following code. Before you try the following code, please make sure to have the package [https://github.com/marella/ctransformers](https://github.com/AutoGPTQ/AutoGPTQ).
 ```
 from transformers import AutoTokenizer
-from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
+from [auto_gptq](https://github.com/marella/ctransformers) import AutoGPTQForCausalLM, BaseQuantizeConfig
 # Prompt
 prompt = "Please act as a professional verilog designer and provide a half adder. \nmodule half_adder\n(input a, \ninput b, \noutput sum, \n output carry);\n"
 
