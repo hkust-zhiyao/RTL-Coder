@@ -78,7 +78,19 @@ for iter in range(args.n):
         for res_i, output in enumerate(outputs):
             s_full = tokenizer.decode(output[len(inputs[0]):].cpu().squeeze(), skip_special_tokens=True)
             #please note that the RTLCoder-deepseek-v1.1 version requires a different code extraction method
-            #s = s_full.split('endmodulemodule', 1)[0] + "endmodule"
+            #if len(s_full.split('endmodulemodule', 1)) == 2:
+                #s = s_full.split('endmodulemodule', 1)[0] + "\n" + "endmodule"
+            #else:
+                #s = s_full.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
+            #if s.find('top_module') != -1:
+                #s = s.split('top_module', 1)[0]
+                #s = s.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
+            #index = s.rfind('tb_module')
+            #if index == -1:
+                #index = s.find('testbench')
+            #if index != -1:
+                #s_tmp = s[:index]
+                #s = s_tmp.rsplit("endmodule", 1)[0] + "\n" + "endmodule"
             #If the RTLCoder version is based on Mistral, just use the following code extraction method.
             s = s_full.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
 
