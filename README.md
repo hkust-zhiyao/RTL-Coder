@@ -10,6 +10,11 @@ Shang Liu, Wenji Fang, Yao Lu, Qijun Zhang, Hongce Zhang, and Zhiyao Xie, "RTL-C
 
 _**Note**: The model, dataset, inference scripts, data generation flow and training flow are provided._
 
+**Important**
+
+If you want to test **RTLCoder-Deepseek**, please check our comments within the **benchmark_inference/test_on_verilog-eval.py** file. They are the response postprocessing method designed for **RTLCoder-Deepseek**. The default inference script is for **RTLCoder-Mistral**.
+
+
 Targeting Verilog code generation, we propose an automated flow to generate a large labeled dataset with over 27,000 diverse Verilog design problems and answers. It addresses the serious data availability challenge in IC design-related tasks, and its potential applications are not limited to LLMs. The
 LLM directly trained on it can already achieve comparable accuracy with GPT-3.5.
 
@@ -32,8 +37,7 @@ TABLE 1: LLM-based works on design RTL generation (e.g., Verilog).
 4. [RTLCoder-v1.1-gptq-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gptq-4bit). (The GPTQ version of RTLCoder-v1.1)
 5. [RTLCoder-v1.1-gguf-4bit](https://huggingface.co/ishorn5/RTLCoder-v1.1-gguf-4bit). This quantized one could run on CPU. (The CPU version of RTLCoder-v1.1)
 
-**Important Notes**
-If you want to test **RTLCoder-Deepseek**, please check our comments within the **benchmark_inference/test_on_verilog-eval.py** file. They are the response postprocessing method designed for **RTLCoder-Deepseek**. The default inference script is for **RTLCoder-Mistral**.
+
 
 ## 1. Working flow overview
 In this paper, there are two main contributions to obtain the RTLCoder. 
