@@ -14,7 +14,6 @@ _**Note**: The model, dataset, inference scripts, data generation flow and train
 **If you want to test **RTLCoder-Deepseek**, please check our comments within the **benchmark_inference/test_on_verilog-eval.py** file. They are the response postprocessing method designed for **RTLCoder-Deepseek**. The default inference script is for **RTLCoder-Mistral**.**
 
 
-
 Targeting Verilog code generation, we propose an automated flow to generate a large labeled dataset with over 27,000 diverse Verilog design problems and answers. It addresses the serious data availability challenge in IC design-related tasks, and its potential applications are not limited to LLMs. The
 LLM directly trained on it can already achieve comparable accuracy with GPT-3.5.
 
