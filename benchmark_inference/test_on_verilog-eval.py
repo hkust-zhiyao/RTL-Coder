@@ -70,50 +70,58 @@ while id <= len(des_data):
                 break
 
         prompt = dic['description'] + '\n' + dic['prompt'] + '\n'
-        tmp_list.append(prompt)
-        dic_list.append(dic)
-        id = id + 1
-        if id > len(des_data):
-            flag = 1
-            break
-    
-    
-    inputs = tokenizer(tmp_list, return_tensors="pt", padding='longest').to(args.gpu_name)
-    outputs = model.generate(inputs=inputs.input_ids, max_length=len(inputs[0]) + 1024, do_sample=True, temperature=args.temperature, top_p=0.95,
-    attention_mask=inputs.attention_mask)
+        inputs = tokenizer(prompt, return_tensors="pt", padding='longest').to(args.gpu_name)
+        outputs = model.generate(inputs=inputs.input_ids, max_length=len(inputs[0]) + 1024, do_sample=True, temperature=args.temperature, top_p=0.95, attention_mask=inputs.attention_mask)
+        s_full=tokenizer.decode(outputs[0][len(inputs[0]):].cpu().squeeze(), skip_special_tokens=True)
 
-    for res_i, output in enumerate(outputs):
-        s_full = tokenizer.decode(output[len(inputs[0]):].cpu().squeeze(), skip_special_tokens=True)
-        #please note that the RTLCoder-deepseek-v1.1 version requires a different extraction method
-        #if len(s_full.split('endmodulemodule', 1)) == 2:
-            #s = s_full.split('endmodulemodule', 1)[0] + "\n" + "endmodule"
-        #else:
-            #s = s_full.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
-        #if s.find('top_module') != -1:
-            #s = s.split('top_module', 1)[0]
-            #s = s.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
-        #index = s.rfind('tb_module')
-        #if index == -1:
-            #index = s.find('testbench')
-        #if index != -1:
-            #s_tmp = s[:index]
-            #s = s_tmp.rsplit("endmodule", 1)[0] + "\n" + "endmodule"
-        #If the RTLCoder version is based on Mistral, just use the following extraction method.
-        ####
         s = s_full.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
-
-        # the model may output testbench after the design code
         index = s.rfind('tb_module')
         if index == -1:
             index = s.find('testbench')
         if index != -1:
             s_tmp = s[:index]
             s = s_tmp.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
-        #####
-    with open(os.path.join(args.output_dir, args.output_file),'a') as f:
-        for dic_item in dic_list:
-            ob = json.dumps(dic_item)
+
+        dic["output"]=s # outputs written to json results
+        tmp_list.append(prompt)
+        dic_list.append(dic)
+        with open(os.path.join(args.output_dir, args.output_file),'a') as f:
+            ob = json.dumps(dic)
             f.write(ob)
             f.write('\n')
-    progress_bar.update(len(dic_list))
+        progress_bar.update(len(dic_list))
+        id = id + 1
+        if id > len(des_data):
+            flag = 1
+            break
+
+
+    # for res_i, output in enumerate(outputs):
+    #     s_full = tokenizer.decode(output[len(inputs[0]):].cpu().squeeze(), skip_special_tokens=True)
+    #     #please note that the RTLCoder-deepseek-v1.1 version requires a different extraction method
+    #     #if len(s_full.split('endmodulemodule', 1)) == 2:
+    #         #s = s_full.split('endmodulemodule', 1)[0] + "\n" + "endmodule"
+    #     #else:
+    #         #s = s_full.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
+    #     #if s.find('top_module') != -1:
+    #         #s = s.split('top_module', 1)[0]
+    #         #s = s.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
+    #     #index = s.rfind('tb_module')
+    #     #if index == -1:
+    #         #index = s.find('testbench')
+    #     #if index != -1:
+    #         #s_tmp = s[:index]
+    #         #s = s_tmp.rsplit("endmodule", 1)[0] + "\n" + "endmodule"
+    #     #If the RTLCoder version is based on Mistral, just use the following extraction method.
+    #     ####
+    #     s = s_full.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
+
+    #     # the model may output testbench after the design code
+    #     index = s.rfind('tb_module')
+    #     if index == -1:
+    #         index = s.find('testbench')
+    #     if index != -1:
+    #         s_tmp = s[:index]
+    #         s = s_tmp.rsplit('endmodule', 1)[0] + "\n" + "endmodule"
+    #     #####
     
