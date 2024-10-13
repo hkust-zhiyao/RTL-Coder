@@ -10,8 +10,8 @@
     | <a href="#-Repo-intro">Repo-intro</a>
     | <a href="#-RTLCoder-flow">RTLCoder-flow</a>
     | <a href="#-Dataset">Dataset-generation</a>
-    | <a href="#-Benchmarking">Model-inference</a>
-    | <a href="#-Model-training">Model-training</a>
+    | <a href="#-Benchmarking">Inference</a>
+    | <a href="#-Training">Training</a>
     | <a href="#-Citation">Citation</a>
 </p>
 
@@ -230,7 +230,7 @@ python test_on_rtllm.py --model <your model path or model card name, e.g., "isho
 ```
 Please refer the RTLLM benchmark repo https://github.com/hkust-zhiyao/RTLLM to evaluate the generated code quality.
 
-## 🏋️ Model-training
+## 🏋️ Training
 
 We provide three options for instruction tuning: MLE based direct train, Scoring train and Scoring train with gradients splitting. For more details, please refer to the paper and the folder **"train"**.
 
@@ -308,24 +308,24 @@ torchrun --nproc_per_node=4  mle_scoring_grad_split.py \
 ```
 ## 📝 Citation
 ```
-@article{goodfellow2020generative,
-  title={Generative adversarial networks},
-  author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
-  journal={Communications of the ACM},
+@article{liu2024rtlcoderb,
+  title={RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique},
+  author={Shang Liu, Wenji Fang, Yao Lu, Jing Wang, Qijun Zhang, Hongce Zhang, and Zhiyao Xie},
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems},
   year={2024},
   publisher={IEEE}
 }
-@article{goodfellow2020generative,
-  title={Generative adversarial networks},
-  author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
-  journal={Communications of the ACM},
+@article{liu2024rtlcodera,
+  title={RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution},
+  author={Shang Liu, Wenji Fang, Yao Lu, Qijun Zhang, Hongce Zhang, and Zhiyao Xie},
+  conference={IEEE International Workshop on LLM-Aided Design},
   year={2024},
   publisher={IEEE}
 }
-@article{goodfellow2020generative,
-  title={Generative adversarial networks},
-  author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
-  journal={Communications of the ACM},
+@article{liu2024openllm,
+  title={OpenLLM-RTL: Open Dataset and Benchmark for LLM-Aided Design RTL Generation},
+  author={Shang Liu, Yao Lu, Wenji Fang, Mengming Li, and Zhiyao Xie},
+  conferencce={IEEE/ACM International Conference on Computer-Aided Design},
   year={2024},
   publisher={IEEE}
 }
