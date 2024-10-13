@@ -311,21 +311,21 @@ torchrun --nproc_per_node=4  mle_scoring_grad_split.py \
 ```
 @article{liu2024rtlcoderb,
   title={RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique},
-  author={Shang Liu, Wenji Fang, Yao Lu, Jing Wang, Qijun Zhang, Hongce Zhang, and Zhiyao Xie},
+  author={Liu, Shang and Fang, Wenji and Lu, Yao and Wang, Jing and Zhang, Qijun and Zhang, Hongce and Xie, Zhiyao},
   journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems},
   year={2024},
   publisher={IEEE}
 }
 @inproceedings{liu2024rtlcodera,
   title={RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution},
-  author={Shang Liu, Wenji Fang, Yao Lu, Qijun Zhang, Hongce Zhang, and Zhiyao Xie},
+  author={Liu, Shang and Fang, Wenji and Lu, Yao and Zhang, Qijun and Zhang, Hongce and Xie, Zhiyao},
   booktitle={2024 IEEE International Workshop on LLM-Aided Design},
   year={2024},
   organization={IEEE}
 }
 @inproceedings{liu2024openllm,
   title={OpenLLM-RTL: Open Dataset and Benchmark for LLM-Aided Design RTL Generation},
-  author={Shang Liu, Yao Lu, Wenji Fang, Mengming Li, and Zhiyao Xie},
+  author={Liu, Shang and Lu, Yao and Fang, Wenji and Li, Mengming and Xie, Zhiyao},
   booktitle={2024 IEEE/ACM International Conference on Computer Aided Design (ICCAD)},
   year={2024},
   organization={IEEE/ACM}
