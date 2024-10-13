@@ -15,6 +15,7 @@
 </p>
 
 ## 📄 Papers
+
 This is the official implementation for RTLCoder. We have three relevant accepted papers: 
 
 **OpenLLM-RTL: Open Dataset and Benchmark for LLM-Aided Design RTL Generation** (Invited).[[paper]](https://zhiyaoxie.com/files/ICCAD24_OpenLLM.pdf) IEEE/ACM International Conference on Computer-Aided Design (ICCAD), 2024. 
@@ -56,6 +57,7 @@ TABLE 1: LLM-based works on design RTL generation (e.g., Verilog).
 
 
 ## 🔄 RTLCoder flow
+
 In this paper, there are two main contributions to obtain the RTLCoder. 
 (1) We first introduce our automated dataset generation flow. It generated our RTL generation dataset with over 27 thousand samples, each sample being a pair of design description instruction and corresponding reference code. We build this automated generation flow by taking full advantage
 of the powerful general text generation ability of the commercial tool GPT. Please notice that GPT is only used for dataset generation in this work and we adhere to the terms of service of OpenAI, and there is no commercial competition between the proposed RTLcoder and OpenAI's models. The automated dataset generation flow is illustrated in **Figure 1** which includes three stages: 1) RTL domain keywords preparation, 2) instruction generation, and 3) reference code generation. We designed several general prompt templates to control GPT generating the desired outputs in each stage.
@@ -74,6 +76,7 @@ of the powerful general text generation ability of the commercial tool GPT. Plea
 
 
 ## 📊 Dataset Generation
+
 We provide the generation scripts and data samples in the folder **"data_generation"**. You can design your own prompting method by modifying the file **"p_example.txt"** and **"instruction_gen.py"**.
 
 You can expand the existing dataset by running the following command.
@@ -227,6 +230,7 @@ python test_on_rtllm.py --model <your model path or model card name, e.g., "isho
 Please refer the RTLLM benchmark repo https://github.com/hkust-zhiyao/RTLLM to evaluate the generated code quality.
 
 ## 🏋️ Model training
+
 We provide three options for instruction tuning: MLE based direct train, Scoring train and Scoring train with gradients splitting. For more details, please refer to the paper and the folder **"train"**.
 
 For MLE based direct training, just simply use:
