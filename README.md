@@ -5,8 +5,12 @@
  |  _ <    | |   | |___  | |___  | (_) | | (_| | |  __/ | |   
  |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|                                           
 ```
-# RTL-Coder: Outperforming GPT-3.5 in RTL Code Generation with Our Fully Open-Source Dataset and Lightweight Solution
-Shang Liu, Wenji Fang, Yao Lu, Qijun Zhang, Hongce Zhang, and Zhiyao Xie, "RTL-Coder: Outperforming GPT-3.5 in RTL Code Generation with Our Fully Open-Source Dataset and Lightweight Solution"[[paper]](https://arxiv.org/abs/2312.08617)
+
+This is the official implementation for RTLCoder.
+We have three relevant accepted papers: 
+RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique.[[paper]]((https://zhiyaoxie.github.io/files/TCAD25_RTLCoder.pdf)) accepted in TCAD.
+RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution.[[paper]](https://zhiyaoxie.com/files/LAD24_RTLCoder.pdf) accepted in International Symposium LLM Aid Design 2024(Best Paper Nomination).
+OpenLLM-RTL: Open Dataset and Benchmark for LLM-Aided Design RTL Generation (Invited).[[paper]](https://zhiyaoxie.com/files/ICCAD24_OpenLLM.pdf) accepted in IEEE/ACM International Conference on Computer Aided Design (ICCAD), 2024
 
 _**Note**: The model, dataset, inference scripts, data generation flow and training flow are provided._
 
