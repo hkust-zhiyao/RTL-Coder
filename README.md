@@ -328,6 +328,6 @@ torchrun --nproc_per_node=4  mle_scoring_grad_split.py \
   author={Shang Liu, Yao Lu, Wenji Fang, Mengming Li, and Zhiyao Xie},
   conferencce={IEEE/ACM International Conference on Computer-Aided Design},
   year={2024},
-  publisher={IEEE}
+  publisher={IEEE/ACM}
 }
 ```
