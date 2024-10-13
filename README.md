@@ -11,6 +11,7 @@
     | <a href="#-RTLCoder flow">RTLCoder flow</a>
     | <a href="#-dataset">Training data generation</a>
     | <a href="#-benchmarking">Model inference</a>
+    | <a href="#-Model training">Model training</a>
 </p>
 
 ## Corresponding Papers
