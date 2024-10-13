@@ -15,13 +15,14 @@ This is the official implementation for RTLCoder. We have three relevant accepte
 **RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution**.[[paper]](https://zhiyaoxie.com/files/LAD24_RTLCoder.pdf) accepted in International Symposium on LLM-Aided Design, 2024 (Best Paper Nomination).
 
 
+## The repo overview
 
 _**Note**: The model, dataset, inference scripts, data generation flow and training flow are provided._
 
 _**Important**: If you want to test **RTLCoder-Deepseek**, please check our comments within the **benchmark_inference/test_on_verilog-eval.py** file. They are the response postprocessing method designed for **RTLCoder-Deepseek**. The default inference script is for **RTLCoder-Mistral**._
 
 
-Targeting Verilog code generation, we propose an automated flow to generate a large labeled dataset with over 27,000 diverse Verilog design problems and answers. It addresses the serious data availability challenge in IC design-related tasks, and its potential applications are not limited to LLMs. The
+Targeting Verilog code generation, we propose an automated flow to generate a large labeled dataset with diverse Verilog design problems and answers. It addresses the serious data availability challenge in IC design-related tasks, and its potential applications are not limited to LLMs. The
 LLM directly trained on it can already achieve comparable accuracy with GPT-3.5.
 
 We also introduce a new LLM training scheme based on code quality feedback. It further boosts the ultimate model performance to outperform GPT-3.5. And we further revised the training process from an algorithm perspective to reduce its GPU memory consumption.
