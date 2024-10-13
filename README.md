@@ -6,12 +6,12 @@
  |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|                                           
 ```
 <p align="left">
-    <a href="#-papers">Corresponding Papers</a>
-    | <a href="#-repo intro">The repo overview</a>
-    | <a href="#-RTLCoder flow">RTLCoder flow</a>
-    | <a href="#-dataset">Training data generation</a>
-    | <a href="#-benchmarking">Model inference</a>
-    | <a href="#-Model training">Model training</a>
+    <a href="#-Papers">Papers</a>
+    | <a href="#-Repo-intro">Repo-intro</a>
+    | <a href="#-RTLCoder-flow">RTLCoder-flow</a>
+    | <a href="#-Dataset">Dataset-generation</a>
+    | <a href="#-Benchmarking">Model-inference</a>
+    | <a href="#-Model-training">Model-training</a>
 </p>
 
 ## 📄 Papers
@@ -25,7 +25,7 @@ This is the official implementation for RTLCoder. We have three relevant accepte
 **RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution**.[[paper]](https://zhiyaoxie.com/files/LAD24_RTLCoder.pdf) International Symposium on LLM-Aided Design, 2024 (Best Paper Nomination).
 
 
-## 📚 Repo intro
+## 📚 Repo-intro
 
 _**Note**: The model, dataset, inference scripts, data generation flow and training flow are provided._
 
@@ -56,7 +56,7 @@ TABLE 1: LLM-based works on design RTL generation (e.g., Verilog).
 
 
 
-## 🔄 RTLCoder flow
+## 🔄 RTLCoder-flow
 
 In this paper, there are two main contributions to obtain the RTLCoder. 
 (1) We first introduce our automated dataset generation flow. It generated our RTL generation dataset with over 27 thousand samples, each sample being a pair of design description instruction and corresponding reference code. We build this automated generation flow by taking full advantage
@@ -75,7 +75,7 @@ of the powerful general text generation ability of the commercial tool GPT. Plea
    Figure 2:  Our proposed training scheme based on RTL quality score.
 
 
-## 📊 Dataset Generation
+## 📊 Dataset
 
 We provide the generation scripts and data samples in the folder **"data_generation"**. You can design your own prompting method by modifying the file **"p_example.txt"** and **"instruction_gen.py"**.
 
@@ -229,7 +229,7 @@ python test_on_rtllm.py --model <your model path or model card name, e.g., "isho
 ```
 Please refer the RTLLM benchmark repo https://github.com/hkust-zhiyao/RTLLM to evaluate the generated code quality.
 
-## 🏋️ Model training
+## 🏋️ Model-training
 
 We provide three options for instruction tuning: MLE based direct train, Scoring train and Scoring train with gradients splitting. For more details, please refer to the paper and the folder **"train"**.
 
