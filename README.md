@@ -6,13 +6,13 @@
  |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|                                           
 ```
 <p align="left">
-    <a href="#-Papers">Papers</a>
-    | <a href="#-Repo-intro">Repo-intro</a>
-    | <a href="#-RTLCoder-flow">RTLCoder-flow</a>
-    | <a href="#-Dataset">Dataset-generation</a>
-    | <a href="#-Benchmarking">Inference</a>
-    | <a href="#training">Training</a>
-    | <a href="#-Citation">Citation</a>
+    📄&nbsp;<a href="#-Papers">Papers</a>
+    | 📚&nbsp;<a href="#-Repo-intro">Repo-intro</a>
+    | 🔄&nbsp;<a href="#-RTLCoder-flow">RTLCoder-flow</a>
+    | 📊&nbsp;<a href="#-Dataset">Dataset-generation</a>
+    | 🧪&nbsp;<a href="#-Benchmarking">Inference</a>
+    | 🏋️&nbsp;<a href="#training">Training</a>
+    | 📝&nbsp;<a href="#-Citation">Citation</a>
 </p>
 
 ## 📄 Papers
