@@ -12,17 +12,18 @@
     | <a href="#-Dataset">Dataset-generation</a>
     | <a href="#-Benchmarking">Model-inference</a>
     | <a href="#-Model-training">Model-training</a>
+    | <a href="#-Citation">Citation</a>
 </p>
 
 ## 📄 Papers
 
 This is the official implementation for RTLCoder. We have three relevant accepted papers: 
 
+**RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique**.[[paper]](https://zhiyaoxie.github.io/files/TCAD25_RTLCoder.pdf) IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD) (Early Access).
+
+**RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution**.[[paper]](https://zhiyaoxie.com/files/LAD24_RTLCoder.pdf) IEEE International Workshop on LLM-Aided Design (LAD), 2024. (Best Paper Nomination ).
+
 **OpenLLM-RTL: Open Dataset and Benchmark for LLM-Aided Design RTL Generation** (Invited).[[paper]](https://zhiyaoxie.com/files/ICCAD24_OpenLLM.pdf) IEEE/ACM International Conference on Computer-Aided Design (ICCAD), 2024. 
-
-**RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique**.[[paper]](https://zhiyaoxie.github.io/files/TCAD25_RTLCoder.pdf) IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems.
-
-**RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution**.[[paper]](https://zhiyaoxie.com/files/LAD24_RTLCoder.pdf) International Symposium on LLM-Aided Design, 2024 (Best Paper Nomination).
 
 
 ## 📚 Repo-intro
@@ -305,4 +306,27 @@ torchrun --nproc_per_node=4  mle_scoring_grad_split.py \
     --deepspeed ds_stage_2.json\
     --model_max_length 2048
 ```
-
+## 📝 Citation
+```
+@article{goodfellow2020generative,
+  title={Generative adversarial networks},
+  author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
+  journal={Communications of the ACM},
+  year={2024},
+  publisher={IEEE}
+}
+@article{goodfellow2020generative,
+  title={Generative adversarial networks},
+  author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
+  journal={Communications of the ACM},
+  year={2024},
+  publisher={IEEE}
+}
+@article{goodfellow2020generative,
+  title={Generative adversarial networks},
+  author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
+  journal={Communications of the ACM},
+  year={2024},
+  publisher={IEEE}
+}
+```
