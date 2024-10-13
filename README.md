@@ -14,14 +14,14 @@
     | <a href="#-Model training">Model training</a>
 </p>
 
-## Corresponding Papers
+## 📄 Papers
 This is the official implementation for RTLCoder. We have three relevant accepted papers: 
 
-**OpenLLM-RTL: Open Dataset and Benchmark for LLM-Aided Design RTL Generation** (Invited).[[paper]](https://zhiyaoxie.com/files/ICCAD24_OpenLLM.pdf) accepted in IEEE/ACM International Conference on Computer Aided Design (ICCAD), 2024. We will release the latest dataset and verification flow within October.
+**OpenLLM-RTL: Open Dataset and Benchmark for LLM-Aided Design RTL Generation** (Invited).[[paper]](https://zhiyaoxie.com/files/ICCAD24_OpenLLM.pdf) IEEE/ACM International Conference on Computer-Aided Design (ICCAD), 2024. 
 
-**RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique**.[[paper]](https://zhiyaoxie.github.io/files/TCAD25_RTLCoder.pdf) accepted in IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems.
+**RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique**.[[paper]](https://zhiyaoxie.github.io/files/TCAD25_RTLCoder.pdf) IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems.
 
-**RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution**.[[paper]](https://zhiyaoxie.com/files/LAD24_RTLCoder.pdf) accepted in International Symposium on LLM-Aided Design, 2024 (Best Paper Nomination).
+**RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution**.[[paper]](https://zhiyaoxie.com/files/LAD24_RTLCoder.pdf) International Symposium on LLM-Aided Design, 2024 (Best Paper Nomination).
 
 
 ## The repo overview
