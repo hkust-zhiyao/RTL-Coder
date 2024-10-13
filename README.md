@@ -10,7 +10,7 @@ This is the official implementation for RTLCoder. We have three relevant accepte
 
 **OpenLLM-RTL: Open Dataset and Benchmark for LLM-Aided Design RTL Generation** (Invited).[[paper]](https://zhiyaoxie.com/files/ICCAD24_OpenLLM.pdf) accepted in IEEE/ACM International Conference on Computer Aided Design (ICCAD), 2024
 
-**RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique**.[[paper]]((https://zhiyaoxie.github.io/files/TCAD25_RTLCoder.pdf)) accepted in TCAD.
+**RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique**.[[paper]]((https://zhiyaoxie.github.io/files/TCAD25_RTLCoder.pdf)) accepted in IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD).
 
 **RTLCoder: Outperforming GPT-3.5 in Design RTL Generation with Our Open-Source Dataset and Lightweight Solution**.[[paper]](https://zhiyaoxie.com/files/LAD24_RTLCoder.pdf) accepted in International Symposium LLM Aid Design 2024(Best Paper Nomination).
 
