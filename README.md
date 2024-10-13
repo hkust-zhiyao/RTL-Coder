@@ -11,7 +11,7 @@
     | <a href="#-RTLCoder-flow">RTLCoder-flow</a>
     | <a href="#-Dataset">Dataset-generation</a>
     | <a href="#-Benchmarking">Inference</a>
-    | <a href="#-Training">Training</a>
+    | <a href="#training">Training</a>
     | <a href="#-Citation">Citation</a>
 </p>
 
@@ -231,6 +231,7 @@ python test_on_rtllm.py --model <your model path or model card name, e.g., "isho
 Please refer the RTLLM benchmark repo https://github.com/hkust-zhiyao/RTLLM to evaluate the generated code quality.
 
 ## 🏋️ Training
+<span id="training"></span>
 
 We provide three options for instruction tuning: MLE based direct train, Scoring train and Scoring train with gradients splitting. For more details, please refer to the paper and the folder **"train"**.
 
