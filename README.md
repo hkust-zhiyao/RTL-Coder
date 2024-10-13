@@ -6,11 +6,11 @@
  |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|                                           
 ```
 <p align="left">
-    <a href="#-papers">Papers</a>
-    | <a href="#-Repo intro">Repo intro</a>
+    <a href="#-papers">Corresponding Papers</a>
+    | <a href="#-repo intro">The repo overview</a>
     | <a href="#-RTLCoder flow">RTLCoder flow</a>
-    | <a href="#-Dataset Generation">Dataset Generation</a>
-    | <a href="#-Benchmarking">Benchmarking</a>
+    | <a href="#-dataset">Training data generation</a>
+    | <a href="#-benchmarking">Model inference</a>
     | <a href="#-Model training">Model training</a>
 </p>
 
