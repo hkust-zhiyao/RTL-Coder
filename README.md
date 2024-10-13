@@ -5,6 +5,14 @@
  |  _ <    | |   | |___  | |___  | (_) | | (_| | |  __/ | |   
  |_| \_\   |_|   |_____|  \____|  \___/   \__,_|  \___| |_|                                           
 ```
+<p align="left">
+    <a href="#-papers">Corresponding Papers</a>
+    | <a href="#-repo intro">The repo overview</a>
+    | <a href="#-RTLCoder flow">Working flow overview</a>
+    | <a href="#-dataset">Training data generation</a>
+    | <a href="#-benchmarking">Model inference</a>
+</p>
+
 ## Corresponding Papers
 This is the official implementation for RTLCoder. We have three relevant accepted papers: 
 
