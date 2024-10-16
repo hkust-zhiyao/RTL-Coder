@@ -208,15 +208,15 @@ You need to firstly download the "verilog-eval" benchmark.
 ```
 git clone https://github.com/NVlabs/verilog-eval.git
 ```
-Then modify the **"descri_path"** and **"input_path"** in **"test_on_nvbench.py"** according to the location of verlog-eval file.  
+Then modify the **"descri_path"** and **"input_path"** in **"test_on_verilog-eval.py"** according to the location of verlog-eval file.  
 
 Use the following command to do model inference on EvalMachine.
 ```
-python test_on_nvbench.py --model <your model path or model card name, e.g., "ishorn5/RTLCoder-v1.1"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalmachine.json> --bench_type Machine
+python test_on_verilog-eval.py --model <your model path or model card name, e.g., "ishorn5/RTLCoder-v1.1"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalmachine.json> --bench_type Machine
 ```
 If you want to do model inference on EvalHuman, just change the --bench_type from Machine to Human.
 ```
-python test_on_nvbench.py --model <your model path or model card name, e.g., "ishorn5/RTLCoder-v1.1"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalhuman.json> --bench_type Human
+python test_on_verilog-eval.py --model <your model path or model card name, e.g., "ishorn5/RTLCoder-v1.1"> --n 20 --temperature=0.2 --gpu_name 0 --output_dir <your result directory> --output_file <your result file, e.g. rtlcoder_temp0.2_evalhuman.json> --bench_type Human
 ```
 Please refer the verilog-eval benchmark repo https://github.com/NVlabs/verilog-eval to evaluate the generated code quality.
 
