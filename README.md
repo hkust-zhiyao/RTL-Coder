@@ -17,7 +17,7 @@
 
 ## 📄 Papers
 
-This is the official implementation for RTLCoder. We have three relevant accepted papers: 
+This is the official implementation for RTLCoder. We have three relevant accepted papers. Please prioritize citing our IEEE TCAD version if you find our repo helpful.
 
 **RTLCoder: Fully Open-Source and Efficient LLM-Assisted RTL Code Generation Technique**.[[paper]](https://zhiyaoxie.github.io/files/TCAD25_RTLCoder.pdf) IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD) (Early Access).
 
